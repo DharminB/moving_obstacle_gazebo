@@ -1,0 +1,47 @@
+<?xml version="1.0"?> 
+<sdf version="1.4">
+  <world name="animated_box_world">
+
+    <!-- Ground Plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <model name="box">
+      <pose>0 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+
+      <plugin name="push_animate" filename="./libanimated_object.so">
+        <animation_time>7.0</animation_time>
+        <loop>true</loop>
+        <number_of_frames>3</number_of_frames>
+        <key_frames>0 2 5</key_frames>
+        <x_positions>0 2 5</x_positions>
+        <y_positions>0 -2 5</y_positions>
+        <orientations>0.0 -1.57 1.57</orientations>
+        <test>0 2 5</test>
+      </plugin>
+    </model>        
+
+  </world>
+</sdf>
